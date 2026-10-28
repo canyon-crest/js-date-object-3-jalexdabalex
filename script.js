@@ -16,7 +16,10 @@
 // element with ID "warmUpDate".
 
 // STEP 1: Create a new Date object using: let now = new Date();
-
+let d = new Date();
+let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let day = days[d.getDay()];
+document.getElementById("warmUpDate").innerHTML = day;
 // STEP 2: Use .getDay() to get the day of the week as a number.
 //         Sunday = 0, Monday = 1, Tuesday = 2, ... Saturday = 6
 
@@ -39,7 +42,10 @@
 // Example: "4/2/2025" (no leading zeros)
 
 // STEP 6: Create a new Date object (or reuse the one from above).
-
+let month = now.getMonth() + 1;
+let day = now.getDate();
+let year = now.getFullYear();
+myDate.innerHTML = month + "/" + day + "/" + year;
 // STEP 7: Get the month using .getMonth()
 //         IMPORTANT: .getMonth() returns 0–11 (January = 0)
 //         so you must add 1 to get the correct month number.
@@ -61,7 +67,7 @@
 
 // STEP 11: Record the start time using new Date().getTime()
 //          This gives you the current time in milliseconds.
-
+let start = new Date().getTime();
 // STEP 12: Create a variable to hold the timer ID (for stopping later).
 //          Use setInterval() with a delay of 10 milliseconds.
 //          Inside the interval function:
@@ -69,8 +75,10 @@
 //          b) Calculate elapsed seconds: (currentTime - startTime) / 1000
 //          c) Display the elapsed time using .toFixed(3)
 //             in the element with ID "myTimer"
-
-
+function time() {
+    myTimer.innerHTML = ((new Date().getTime()-start)/1000).toFixed(3);
+}
+let timee = setInterval(time, 10);
 // ============================================
 //  PART 3: Start/Stop Toggle Button
 // ============================================
@@ -83,7 +91,20 @@
 
 // STEP 13: Create a variable to track whether the timer is
 //          currently running (let running = true;)
-
+let running = true;
+myBtn.addEventListener('click', function() {
+    if(running){
+        clearInterval(timee);
+        running = false;
+        myBtn.innerHTML = "Start";
+    }
+    else {
+        start = new Date().getTime()
+        timee = setInterval(time, 10)
+        myBtn.innerHTML = "Start";
+        running = true;
+    }
+})
 // STEP 14: Add a click event listener to the button (ID "myBtn").
 //          Inside the listener:
 //          a) If running is true:
