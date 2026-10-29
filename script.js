@@ -18,8 +18,8 @@
 // STEP 1: Create a new Date object using: let now = new Date();
 let d = new Date();
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-let day = days[d.getDay()];
-document.getElementById("warmUpDate").innerHTML = day;
+let daysnj = days[d.getDay()];
+document.getElementById("warmUpDate").innerHTML = daysnj;
 // STEP 2: Use .getDay() to get the day of the week as a number.
 //         Sunday = 0, Monday = 1, Tuesday = 2, ... Saturday = 6
 
@@ -42,10 +42,10 @@ document.getElementById("warmUpDate").innerHTML = day;
 // Example: "4/2/2025" (no leading zeros)
 
 // STEP 6: Create a new Date object (or reuse the one from above).
-let month = now.getMonth() + 1;
-let day = now.getDate();
-let year = now.getFullYear();
-myDate.innerHTML = month + "/" + day + "/" + year;
+let month = d.getMonth() + 1;
+let day = d.getDate();
+let year = d.getFullYear();
+document.getElementById("myDate").innerHTML = month + "/" + day + "/" + year;
 // STEP 7: Get the month using .getMonth()
 //         IMPORTANT: .getMonth() returns 0–11 (January = 0)
 //         so you must add 1 to get the correct month number.
@@ -76,7 +76,7 @@ let start = new Date().getTime();
 //          c) Display the elapsed time using .toFixed(3)
 //             in the element with ID "myTimer"
 function time() {
-    myTimer.innerHTML = ((new Date().getTime()-start)/1000).toFixed(3);
+    document.getElementById("myTimer").innerHTML = ((new Date().getTime()-start)/1000).toFixed(3);
 }
 let timee = setInterval(time, 10);
 // ============================================
@@ -96,12 +96,12 @@ myBtn.addEventListener('click', function() {
     if(running){
         clearInterval(timee);
         running = false;
-        myBtn.innerHTML = "Start";
+        document.getElementById("myBtn").innerHTML = "Start";
     }
     else {
         start = new Date().getTime()
         timee = setInterval(time, 10)
-        myBtn.innerHTML = "Start";
+        document.getElementById("myBtn").innerHTML = "Stop";
         running = true;
     }
 })
